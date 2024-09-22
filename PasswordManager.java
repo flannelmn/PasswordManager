@@ -168,20 +168,20 @@ public class PasswordManager {
         if(createFile()){
             System.out.println("No password file detected. Creating a new Password file.");
             //ask for initial password
-            System.out.println("Enter the passcode you want to use to access your passwords: ");
+            System.out.print("Enter the passcode you want to use to access your passwords: ");
             String initialPassword = scanner.nextLine();
             //generate salt with encrypted token and add to first line of the file
             initializeFile(initialPassword);
         }else{
             //otherwise, ask for password
-            System.out.println("Enter the passcode to access your passwords: ");
+            System.out.print("Enter the passcode to access your passwords: ");
             String passwordPassword = scanner.nextLine();
 
             // verify password password
             boolean correct = verifyFileAccess(passwordPassword);
             while(!correct){
                 System.out.println("Incorrect password, please try again.");
-                System.out.println("Enter the passcode to access your passwords: ");
+                System.out.print("Enter the passcode to access your passwords: ");
                 passwordPassword = scanner.nextLine();
                 correct = verifyFileAccess(passwordPassword);
             }
@@ -194,22 +194,22 @@ public class PasswordManager {
             System.out.println("r : Read Password");
             System.out.println("q : Quit");
 
-            System.out.println("Enter choice: ");
+            System.out.print("Enter choice: ");
             String choice = scanner.nextLine();
 
             
             if(choice.equals("a")){
 
-                System.out.println("Enter label for password: ");
+                System.out.print("Enter label for password: ");
                 String label = scanner.nextLine();
-                System.out.println("Enter password to store: ");
+                System.out.print("Enter password to store: ");
                 String pass = scanner.nextLine();
 
                 addPassword(label, pass);
 
             }else if(choice.equals("r")){
 
-                System.out.println("Enter label for password: ");
+                System.out.print("Enter label for password: ");
                 String label = scanner.nextLine();
 
                 //get password
@@ -219,13 +219,13 @@ public class PasswordManager {
                     String password = decrypt(encryptedPass);
                     System.out.println("Found: " + password);
                 }else{
-                    System.out.println("Password associated with " + label + " could not be found");
+                    System.out.println("Password associated with " + label + " could not be found.");
                 }
                 
 
             }else{
 
-                System.out.println("Quitting");
+                System.out.println("Quitting...");
                 cont = false;
 
             }
